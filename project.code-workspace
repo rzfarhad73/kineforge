@@ -1,0 +1,57 @@
+{
+  "folders": [
+    {
+      "name": "svg-animator",
+      "path": ".",
+    },
+  ],
+  "settings": {
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": false,
+    "editor.formatOnType": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      // Organise imports on explicit request only (Shift+Alt+O), not on every save
+      "source.organizeImports": "explicit",
+    },
+
+    // Yarn Berry PnP: TypeScript is resolved via the PnP SDK, not from node_modules.
+    // Run `yarn dlx @yarnpkg/sdks vscode` to regenerate .yarn/sdks if needed.
+    "js/ts.tsdk.path": ".yarn/sdks/typescript/lib",
+    "js/ts.tsdk.promptToUseWorkspaceVersion": true,
+
+    // Enables Tailwind class autocomplete inside tw`...` template literals
+    "editor.quickSuggestions": {
+      "strings": true,
+    },
+    "tailwindCSS.experimental.classRegex": [
+      ["tw`([^`]*)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+      ["tw\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ],
+
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/dist": true,
+      "**/.yarn/cache": true,
+      "**/.yarn/install-state.gz": true,
+    },
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/dist": true,
+      "**/.yarn/cache": true,
+      "**/.yarn/install-state.gz": true,
+    },
+  },
+  "extensions": {
+    "recommendations": [
+      // Formatting
+      "esbenp.prettier-vscode",
+      // ESLint
+      "dbaeumer.vscode-eslint",
+      // twin.macro Tailwind IntelliSense
+      "lightyen.tailwindcss-intellisense-twin",
+      // Emotion / styled-components syntax highlighting
+      "styled-components.vscode-styled-components",
+    ],
+  },
+}

@@ -1,0 +1,132 @@
+@import 'tailwindcss';
+
+@custom-variant coarse-pointer (@media (pointer: coarse));
+
+@theme {
+  --color-background: #09090b;
+  --color-surface: #18181b;
+  --color-surface-raised: #27272a;
+  --color-surface-hover: #3f3f46;
+
+  --color-primary: #4f46e5;
+  --color-primary-hover: #4338ca;
+  --color-primary-fg: #ffffff;
+
+  --color-accent: #6366f1;
+  --color-accent-light: #818cf8;
+  --color-accent-lighter: #a5b4fc;
+  --color-accent-faint: #c7d2fe;
+
+  --color-fg: #d4d4d8;
+  --color-fg-input: #e4e4e7;
+  --color-fg-secondary: #a1a1aa;
+  --color-fg-muted: #71717a;
+  --color-fg-subtle: #52525b;
+
+  --color-error: #f87171;
+
+  --tooltip-border: #27272a;
+  --selection-border-bright: #22d3ee;
+  --selection-border-dark: #6d28d9;
+
+  --color-canvas-dark: #0e0e10;
+  --color-canvas-light: #e5e5e5;
+  --color-canvas-light-fg: #18181b;
+
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+}
+
+[data-canvas-bg='dark'] {
+  --canvas-bg: var(--color-canvas-dark);
+  --canvas-grid-line: rgba(255, 255, 255, 0.025);
+  --canvas-bounds-border: rgba(255, 255, 255, 0.08);
+  --scrollbar-thumb: rgba(255, 255, 255, 0.2);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.35);
+  --scrollbar-thumb-active: rgba(255, 255, 255, 0.5);
+  --badge-bg: rgba(255, 255, 255, 0.88);
+  --badge-fg: #18181b;
+  --badge-shadow: 0 1px 4px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.06);
+  --axis-color-x: #2563eb;
+  --axis-color-y: #16a34a;
+}
+
+[data-canvas-bg='light'] {
+  --canvas-bg: var(--color-canvas-light);
+  --canvas-grid-line: rgba(0, 0, 0, 0.03);
+  --canvas-bounds-border: rgba(0, 0, 0, 0.12);
+  --scrollbar-thumb: rgba(120, 113, 108, 0.35);
+  --scrollbar-thumb-hover: rgba(87, 83, 78, 0.5);
+  --scrollbar-thumb-active: rgba(68, 64, 60, 0.65);
+  --badge-bg: rgba(0, 0, 0, 0.82);
+  --badge-fg: #fff;
+  --badge-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  --axis-color-x: #93c5fd;
+  --axis-color-y: #86efac;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-fg-subtle);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-fg-muted);
+}
+
+/* Ensure interactive elements have adequate touch targets on touch devices */
+@media (pointer: coarse) {
+  button,
+  [role='treeitem'] {
+    min-height: 44px;
+  }
+
+  /* Wider resize handles on touch */
+  [class*='cursor-col-resize'] {
+    width: 16px;
+  }
+}
+
+.slider-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: var(--color-accent);
+  cursor: pointer;
+  border: 2px solid var(--color-primary-fg);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 2;
+}
+
+.slider-input::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: var(--color-accent);
+  cursor: pointer;
+  border: 2px solid var(--color-primary-fg);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.slider-input::-webkit-slider-runnable-track {
+  background: transparent;
+}
+
+.slider-input::-moz-range-track {
+  background: transparent;
+}

@@ -1,0 +1,27 @@
+# Kineforge
+
+> A browser-based SVG animation studio. Create, edit, and export SVG animations with ease — no installation required.
+
+Kineforge is a free, open-source web application for creating and editing SVG animations directly in the browser. It supports CSS animations and SMIL, provides a visual timeline editor, and lets you export the result as a standalone animated SVG file.
+
+## Features
+
+- Visual SVG animation editor
+- CSS and SMIL animation support
+- Element selection and transformation controls
+- Undo/redo history
+- Export animated SVGs
+- Responsive design — works on desktop and mobile
+- No account or installation required
+
+## Usage
+
+Open the app at https://kineforge.farhad-rezaei.com/ and either upload an existing SVG or start from scratch. Use the sidebar controls to add and configure animations on individual SVG elements, preview the result on the canvas, and export when ready.
+
+## Author
+
+Built by [Farhad Rezaei](https://farhad-rezaei.com).
+
+## Source
+
+- App: https://kineforge.farhad-rezaei.com/
