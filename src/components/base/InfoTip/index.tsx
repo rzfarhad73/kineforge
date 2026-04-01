@@ -10,7 +10,7 @@ export function InfoTip({ content }: InfoTipProps) {
   return (
     <Tooltip content={content} position="top">
       <span
-        className="inline-flex items-center text-fg-muted/60 hover:text-fg-muted transition-colors cursor-help"
+        className="inline-flex items-center text-fg-secondary/60 hover:text-fg-secondary transition-colors cursor-help"
         aria-label="More information"
       >
         <Info size={12} aria-hidden="true" />

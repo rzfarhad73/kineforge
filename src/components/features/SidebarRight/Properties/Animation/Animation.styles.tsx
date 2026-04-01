@@ -12,7 +12,10 @@ export function SectionHeader({ className, ...props }: React.ComponentProps<'div
 
 export function SectionTitle({ className, ...props }: React.ComponentProps<'h3'>) {
   return (
-    <h3 className={`text-sm font-medium text-fg uppercase tracking-wider ${className ?? ''}`} {...props} />
+    <h3
+      className={`text-sm font-semibold text-fg uppercase tracking-wider ${className ?? ''}`}
+      {...props}
+    />
   )
 }
 

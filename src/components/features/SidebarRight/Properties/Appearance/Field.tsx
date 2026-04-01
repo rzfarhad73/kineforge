@@ -24,7 +24,7 @@ export function AppearanceField({
 }: AppearanceFieldProps) {
   return (
     <FieldRow>
-      <Label className="w-24 shrink-0 mb-0 inline-flex items-center gap-1">
+      <Label className="w-24 shrink-0 mb-0 inline-flex items-center gap-1 text-fg-secondary">
         {field.label}
         <InfoTip content={field.tooltip} />
       </Label>

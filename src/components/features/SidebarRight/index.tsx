@@ -36,7 +36,7 @@ export function SidebarRight({ mobile }: SidebarRightProps) {
   return (
     <aside
       aria-label="Properties"
-      className="relative border-l border-surface-raised bg-surface/50 flex flex-col shrink-0"
+      className="relative border-l border-surface-raised bg-surface/50 flex flex-col shrink-0 min-w-[340px]"
       style={{ width: `${width}px` }}
     >
       <div

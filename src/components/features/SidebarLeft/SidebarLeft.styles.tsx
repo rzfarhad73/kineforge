@@ -4,7 +4,7 @@ export function SidebarWrapper({ className, ...props }: React.ComponentProps<'as
   return (
     <aside
       aria-label="Layers and input"
-      className={`relative border-r border-surface-raised bg-surface/50 flex flex-col shrink-0 ${className ?? ''}`}
+      className={`relative border-r border-surface-raised bg-surface/50 flex flex-col shrink-0 min-w-[340px] ${className ?? ''}`}
       {...props}
     />
   )

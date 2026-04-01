@@ -58,7 +58,7 @@ export function FieldsItem({
   return (
     <FieldRow>
       <Label
-        className="w-24 shrink-0 mb-0 inline-flex items-center justify-between gap-1"
+        className="w-24 shrink-0 mb-0 inline-flex items-center justify-between gap-1 text-fg-secondary"
         title={label}
       >
         <span className="inline-flex items-center gap-1 min-w-0">
