@@ -11,7 +11,7 @@ const variantClasses: Record<ButtonVariant, string> = {
   secondary: 'bg-surface-raised hover:bg-surface-hover text-fg rounded-lg font-medium',
   black:
     'bg-surface border border-surface-raised rounded-lg hover:bg-surface-raised shadow-sm text-fg-secondary',
-  text: 'text-xs text-accent-light hover:text-accent-lighter text-left p-0 bg-transparent border-none',
+  text: 'text-xs text-left p-0 bg-transparent border-none',
   icon: 'shrink-0 bg-transparent p-0.5 coarse-pointer:p-2 rounded transition-opacity duration-75 opacity-40 hover:opacity-80! coarse-pointer:opacity-60',
 }
 

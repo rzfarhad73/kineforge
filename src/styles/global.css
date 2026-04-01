@@ -88,7 +88,6 @@ body {
 
 /* Ensure interactive elements have adequate touch targets on touch devices */
 @media (pointer: coarse) {
-  button,
   [role='treeitem'] {
     min-height: 44px;
   }

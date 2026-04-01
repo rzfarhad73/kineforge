@@ -21,7 +21,7 @@ export function SheetPanel({
   return (
     <div
       role="dialog"
-      className={`relative w-full max-h-[85vh] rounded-t-2xl border border-b-0 border-surface-raised bg-surface shadow-2xl flex flex-col transition-transform duration-300 ease-out ${className ?? ''}`}
+      className={`relative w-full max-h-[85dvh] rounded-t-2xl border border-b-0 border-surface-raised bg-surface shadow-2xl flex flex-col transition-transform duration-300 ease-out ${className ?? ''}`}
       style={{
         transform: $visible ? `translateY(${$dragOffset}px)` : 'translateY(100%)',
       }}
