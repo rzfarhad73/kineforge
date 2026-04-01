@@ -5,7 +5,7 @@ export function StyledLabel({
 }: React.ComponentProps<'label'> & { $disabled?: boolean }) {
   return (
     <label
-      className={`block text-xs text-fg-muted mb-1 ${$disabled ? 'opacity-50' : ''} ${className ?? ''}`}
+      className={`block text-xs text-fg-muted ${$disabled ? 'opacity-50' : ''} ${className ?? ''}`}
       {...props}
     />
   )

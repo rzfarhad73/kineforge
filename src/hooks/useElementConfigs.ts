@@ -217,6 +217,24 @@ export function useElementConfigs() {
     liveOffsetsRef.current[id] = { ...prev, [axis]: value }
   }, [])
 
+  const resetAnimation = useCallback((id: string, isAdvanced: boolean) => {
+    undoCallbacks.pushImmediate?.()
+    const storeKey = isAdvanced ? 'advancedAnimation' : 'customAnimation'
+    setElementConfigs((prev) => {
+      const prevConfig = prev[id] ?? {}
+      return {
+        ...prev,
+        [id]: {
+          ...prevConfig,
+          [storeKey]: {},
+          animate: undefined,
+          transition: undefined,
+          initial: undefined,
+        },
+      }
+    })
+  }, [])
+
   const remapConfigs = useCallback((mapping: Map<string, string>, removedIds: Set<string>) => {
     setElementConfigs((prev) => {
       const next: ElementConfigs = {}
@@ -240,6 +258,7 @@ export function useElementConfigs() {
     elementConfigs,
     updateStyle,
     updateCustomAnimation,
+    resetAnimation,
     toggleVisibility,
     updateZIndex,
     updateOffset,

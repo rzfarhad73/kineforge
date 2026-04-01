@@ -20,24 +20,38 @@ export function AnimationFields({
   onUpdate,
   onGlobalDurationChange,
 }: AnimationFieldsProps) {
-  const renderField = (f: AnimFieldDef) => (
-    <FieldsItem
-      key={f.animKey}
-      label={f.label}
-      tooltip={f.tooltip}
-      advancedTooltip={f.advancedTooltip}
-      value={customAnim[f.animKey]}
-      defaultValue={f.defaultValue}
-      onChange={(v) => onUpdate(f.animKey, v)}
-      durationValue={customAnim[f.durationKey]}
-      onDurationChange={(v) => onUpdate(f.durationKey, v)}
-      min={f.min}
-      max={f.max}
-      step={f.step}
-      isAdvanced={isAdvanced}
-      placeholder={f.placeholder}
-    />
-  )
+  const renderField = (f: AnimFieldDef) => {
+    const rawValue = customAnim[f.animKey]
+    const rawDuration = customAnim[f.durationKey]
+    const valueModified =
+      rawValue !== undefined && rawValue !== '' && Number(rawValue) !== f.defaultValue
+    const durationModified = rawDuration !== undefined && rawDuration !== ''
+    const isModified = valueModified || durationModified
+
+    return (
+      <FieldsItem
+        key={f.animKey}
+        label={f.label}
+        tooltip={f.tooltip}
+        advancedTooltip={f.advancedTooltip}
+        value={rawValue}
+        defaultValue={f.defaultValue}
+        onChange={(v) => onUpdate(f.animKey, v)}
+        onReset={() => {
+          onUpdate(f.animKey, f.defaultValue)
+          onUpdate(f.durationKey, '')
+        }}
+        isModified={isModified}
+        durationValue={rawDuration}
+        onDurationChange={(v) => onUpdate(f.durationKey, v)}
+        min={f.min}
+        max={f.max}
+        step={f.step}
+        isAdvanced={isAdvanced}
+        placeholder={f.placeholder}
+      />
+    )
+  }
 
   return (
     <FieldList>

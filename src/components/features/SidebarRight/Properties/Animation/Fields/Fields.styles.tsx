@@ -1,5 +1,10 @@
 export function FieldRow({ className, ...props }: React.ComponentProps<'div'>) {
-  return <div className={`flex items-center justify-between gap-3 ${className ?? ''}`} {...props} />
+  return (
+    <div
+      className={`group flex items-center justify-between gap-3 ${className ?? ''}`}
+      {...props}
+    />
+  )
 }
 
 export function FieldControl({ className, ...props }: React.ComponentProps<'div'>) {

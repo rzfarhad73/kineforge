@@ -7,6 +7,7 @@ export function useAnimation() {
   const {
     elementConfigs,
     updateCustomAnimation,
+    resetAnimation,
     isPlaying,
     setIsPlaying,
     documentDurations,
@@ -24,6 +25,7 @@ export function useAnimation() {
 
   const config = selectedId ? (elementConfigs[selectedId] ?? {}) : {}
   const customAnim = isAdvanced ? (config.advancedAnimation ?? {}) : (config.customAnimation ?? {})
+  const hasAnimations = Object.keys(customAnim).length > 0
 
   const update = (key: string, value: string | number) => {
     if (!selectedId) return
@@ -63,6 +65,11 @@ export function useAnimation() {
     }
   }
 
+  const handleReset = () => {
+    if (!selectedId) return
+    resetAnimation(selectedId, isAdvanced)
+  }
+
   return {
     selectedId,
     tag,
@@ -76,5 +83,7 @@ export function useAnimation() {
     update,
     handleAdvancedToggle,
     handleGlobalDurationChange,
+    handleReset,
+    hasAnimations,
   }
 }

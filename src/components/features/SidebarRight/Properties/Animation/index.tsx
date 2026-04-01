@@ -19,6 +19,8 @@ export function Animation() {
     update,
     handleAdvancedToggle,
     handleGlobalDurationChange,
+    handleReset,
+    hasAnimations,
   } = useAnimation()
 
   if (!selectedId) return null
@@ -37,7 +39,12 @@ export function Animation() {
   return (
     <Section>
       <div>
-        <AnimationHeader isAdvanced={isAdvanced} onAdvancedToggle={handleAdvancedToggle} />
+        <AnimationHeader
+          isAdvanced={isAdvanced}
+          hasAnimations={hasAnimations}
+          onAdvancedToggle={handleAdvancedToggle}
+          onReset={handleReset}
+        />
 
         <AnimationPlayback
           isPlaying={isPlaying}

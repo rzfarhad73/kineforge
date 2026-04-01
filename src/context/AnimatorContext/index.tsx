@@ -19,6 +19,7 @@ export interface AnimatorActionsValue {
     docDuration?: number,
     advanced?: boolean,
   ) => void
+  resetAnimation: (id: string, isAdvanced: boolean) => void
   toggleVisibility: (id: string) => void
   updateZIndex: (id: string, zIndex: number) => void
   updateOffset: (id: string, axis: 'offsetX' | 'offsetY', value: number) => void
@@ -44,6 +45,7 @@ export function AnimatorProvider({ children }: { children: React.ReactNode }) {
     elementConfigs,
     updateStyle,
     updateCustomAnimation,
+    resetAnimation,
     toggleVisibility,
     updateZIndex,
     updateOffset,
@@ -70,6 +72,7 @@ export function AnimatorProvider({ children }: { children: React.ReactNode }) {
     () => ({
       updateStyle,
       updateCustomAnimation,
+      resetAnimation,
       toggleVisibility,
       updateZIndex,
       updateOffset,
@@ -84,6 +87,7 @@ export function AnimatorProvider({ children }: { children: React.ReactNode }) {
     [
       updateStyle,
       updateCustomAnimation,
+      resetAnimation,
       toggleVisibility,
       updateZIndex,
       updateOffset,

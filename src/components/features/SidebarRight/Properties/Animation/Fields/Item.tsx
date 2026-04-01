@@ -1,4 +1,4 @@
-import { Code2 } from 'lucide-react'
+import { Code2, RotateCcw } from 'lucide-react'
 
 import { InfoTip } from '@/components/base/InfoTip'
 import { Input } from '@/components/base/Input'
@@ -23,6 +23,8 @@ export interface FieldsItemProps {
   onDurationChange?: (v: string) => void
   isAdvanced: boolean
   onChange: (v: string | number) => void
+  onReset?: () => void
+  isModified?: boolean
   min: number
   max: number
   step: number
@@ -39,6 +41,8 @@ export function FieldsItem({
   onDurationChange,
   isAdvanced,
   onChange,
+  onReset,
+  isModified,
   min,
   max,
   step,
@@ -53,10 +57,25 @@ export function FieldsItem({
 
   return (
     <FieldRow>
-      <Label className="w-24 shrink-0 mb-0 inline-flex items-center gap-1" title={label}>
-        <span className="whitespace-nowrap">{label}</span>
-        {(tooltip || advancedTooltip) && (
-          <InfoTip content={(isAdvanced && advancedTooltip) || tooltip || ''} />
+      <Label
+        className="w-24 shrink-0 mb-0 inline-flex items-center justify-between gap-1"
+        title={label}
+      >
+        <span className="inline-flex items-center gap-1 min-w-0">
+          <span className="whitespace-nowrap">{label}</span>
+          {(tooltip || advancedTooltip) && (
+            <InfoTip content={(isAdvanced && advancedTooltip) || tooltip || ''} />
+          )}
+        </span>
+        {onReset && isModified && (
+          <button
+            type="button"
+            onClick={onReset}
+            className="opacity-60 group-hover:opacity-100 text-fg-muted group-hover:text-destructive transition-colors shrink-0 cursor-pointer"
+            aria-label={`Reset ${label}`}
+          >
+            <RotateCcw className="w-3 h-3" />
+          </button>
         )}
       </Label>
       <FieldControl>
