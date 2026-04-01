@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import { clearPositionBadge, getLastRulerBounds, syncPositionBadge } from '@/utils/canvas'
 
@@ -11,7 +11,6 @@ interface OverlayProps {
 }
 
 export function Overlay({ selectedId, selectedIds }: OverlayProps) {
-  const badgeRef = useRef<HTMLDivElement>(null)
   const { zoom, pan } = useZoomContext()
   const [guideLines, setGuideLines] = useState<{
     xStart?: number
@@ -23,11 +22,11 @@ export function Overlay({ selectedId, selectedIds }: OverlayProps) {
   useEffect(() => {
     if (!selectedId) {
       clearPositionBadge()
-      setGuideLines(null)
       return
     }
     const ids = selectedIds.size > 1 ? Array.from(selectedIds) : [selectedId]
-    syncPositionBadge(ids)
+    const raf = requestAnimationFrame(() => syncPositionBadge(ids))
+    return () => cancelAnimationFrame(raf)
   }, [selectedId, selectedIds])
 
   const updateGuideLines = useCallback(() => {
@@ -52,13 +51,13 @@ export function Overlay({ selectedId, selectedIds }: OverlayProps) {
   }, [zoom, pan.x, pan.y])
 
   useEffect(() => {
+    const raf = requestAnimationFrame(updateGuideLines)
     document.addEventListener('ruler-highlight-changed', updateGuideLines)
-    return () => document.removeEventListener('ruler-highlight-changed', updateGuideLines)
-  }, [zoom, pan.x, pan.y])
-
-  useEffect(() => {
-    updateGuideLines()
-  }, [zoom, pan.x, pan.y])
+    return () => {
+      cancelAnimationFrame(raf)
+      document.removeEventListener('ruler-highlight-changed', updateGuideLines)
+    }
+  }, [updateGuideLines])
 
   useEffect(() => {
     return () => clearPositionBadge()
@@ -74,7 +73,7 @@ export function Overlay({ selectedId, selectedIds }: OverlayProps) {
           yEnd={guideLines.yEnd}
         />
       )}
-      <PositionBadge ref={badgeRef}>
+      <PositionBadge>
         <AxisLabel axis="x" data-pos-x>
           x: 0
         </AxisLabel>
