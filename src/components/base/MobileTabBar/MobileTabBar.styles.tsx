@@ -40,7 +40,7 @@ export function TabButton({
 }: React.ComponentProps<'button'> & { $active: boolean }) {
   return (
     <button
-      className={`relative flex-1 flex flex-col items-center justify-center gap-1 py-2 min-h-14 cursor-pointer transition-colors duration-200 ${
+      className={`relative flex-1 flex flex-col items-center justify-center gap-1 py-2 min-h-14 cursor-pointer touch-manipulation transition-colors duration-200 ${
         $active ? 'text-accent-light' : 'text-fg-muted'
       } ${className ?? ''}`}
       {...props}

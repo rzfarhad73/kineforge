@@ -4,7 +4,9 @@ import { Input as BaseInput } from '@/components/base/Input'
 import { Label } from '@/components/base/Label'
 
 export function InputSection({ className, ...props }: React.ComponentProps<'div'>) {
-  return <div className={`flex flex-col gap-4 ${className ?? ''}`} {...props} />
+  return (
+    <div className={`flex flex-col gap-4 coarse-pointer:gap-2 ${className ?? ''}`} {...props} />
+  )
 }
 
 export function UploadGroup({ className, ...props }: React.ComponentProps<'div'>) {
@@ -22,7 +24,7 @@ export function SectionLabel({ className, ...props }: React.ComponentProps<typeo
 export function DropZone({ className, ...props }: React.ComponentProps<'label'>) {
   return (
     <label
-      className={`flex items-center justify-center w-full h-32 px-4 bg-surface border-2 border-surface-raised border-dashed rounded-xl cursor-pointer transition-colors hover:border-accent/50 hover:bg-surface-raised/50 ${className ?? ''}`}
+      className={`flex items-center justify-center w-full h-32 coarse-pointer:h-20 px-4 bg-surface border-2 border-surface-raised border-dashed rounded-xl cursor-pointer transition-colors hover:border-accent/50 hover:bg-surface-raised/50 ${className ?? ''}`}
       {...props}
     />
   )
@@ -45,7 +47,12 @@ export function HiddenFileInput({ className, ...props }: React.ComponentProps<'i
 }
 
 export function PasteTextarea({ className, ...props }: React.ComponentProps<typeof BaseInput>) {
-  return <BaseInput className={`w-full min-h-32 h-36 ${className ?? ''}`} {...props} />
+  return (
+    <BaseInput
+      className={`w-full min-h-32 h-36 coarse-pointer:min-h-16 coarse-pointer:h-20 ${className ?? ''}`}
+      {...props}
+    />
+  )
 }
 
 export function ButtonRow({ className, ...props }: React.ComponentProps<'div'>) {

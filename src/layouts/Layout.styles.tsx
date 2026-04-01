@@ -1,7 +1,7 @@
 export function LayoutShell(props: React.ComponentProps<'div'>) {
   return (
     <div
-      className="flex flex-col h-screen bg-background text-fg font-sans overflow-hidden"
+      className="flex flex-col h-screen [height:100dvh] bg-background text-fg font-sans overflow-hidden"
       {...props}
     />
   )
@@ -9,10 +9,7 @@ export function LayoutShell(props: React.ComponentProps<'div'>) {
 
 export function ContentArea({ className, ...props }: React.ComponentProps<'div'>) {
   return (
-    <div
-      className={`flex flex-1 min-h-0 overflow-hidden relative ${className ?? ''}`}
-      {...props}
-    />
+    <div className={`flex flex-1 min-h-0 overflow-hidden relative ${className ?? ''}`} {...props} />
   )
 }
 

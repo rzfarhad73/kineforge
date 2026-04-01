@@ -21,7 +21,7 @@ export function MobileTabBar() {
         <TabButton
           key={id}
           $active={activeTab === id}
-          onClick={() => setActiveTab(id)}
+          onPointerDown={() => setActiveTab(id)}
           aria-label={label}
           aria-current={activeTab === id ? 'page' : undefined}
         >

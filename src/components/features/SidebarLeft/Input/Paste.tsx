@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import { Button } from '@/components/base/Button'
+import { useIsMobile } from '@/hooks/useMediaQuery'
 
 import { ButtonRow, ErrorMessage, PasteGroup, PasteTextarea, SectionLabel } from './Input.styles'
 
@@ -12,6 +13,7 @@ interface SvgPasteInputProps {
 export function InputPaste({ onImport, onLoadSample }: SvgPasteInputProps) {
   const [value, setValue] = useState('')
   const [error, setError] = useState<string | null>(null)
+  const isMobile = useIsMobile()
 
   const handleAdd = () => {
     if (!value.trim()) return
@@ -32,18 +34,18 @@ export function InputPaste({ onImport, onLoadSample }: SvgPasteInputProps) {
   return (
     <PasteGroup>
       <SectionLabel>Or Paste SVG Code</SectionLabel>
-      <PasteTextarea
-        multiline
-        placeholder="<svg>...</svg>"
-        value={value}
-        onChange={handleChange}
-      />
+      <PasteTextarea multiline placeholder="<svg>...</svg>" value={value} onChange={handleChange} />
       {error && <ErrorMessage>{error}</ErrorMessage>}
       <ButtonRow>
-        <Button variant="primary" onClick={handleAdd} disabled={!value.trim()}>
+        <Button
+          variant="primary"
+          size={isMobile ? 'sm' : 'md'}
+          onClick={handleAdd}
+          disabled={!value.trim()}
+        >
           Add SVG
         </Button>
-        <Button variant="secondary" onClick={onLoadSample}>
+        <Button variant="secondary" size={isMobile ? 'sm' : 'md'} onClick={onLoadSample}>
           Load sample
         </Button>
       </ButtonRow>

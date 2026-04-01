@@ -1,3 +1,6 @@
+import { useLayoutContext } from '@/context'
+import { useIsMobile } from '@/hooks/useMediaQuery'
+
 import { PlaybackLabel, Section, SectionHeader, SectionTitle } from './Animation.styles'
 import { AnimationFields } from './Fields'
 import { AnimationHeader } from './Header'
@@ -6,6 +9,8 @@ import { useAnimation } from './hooks/useAnimation'
 import { AnimationPlayback } from './Playback'
 
 export function Animation() {
+  const isMobile = useIsMobile()
+  const { setActiveTab } = useLayoutContext()
   const {
     selectedId,
     tag,
@@ -49,7 +54,14 @@ export function Animation() {
         <AnimationPlayback
           isPlaying={isPlaying}
           isMirror={customAnim.mirror !== '0'}
-          onTogglePlay={() => setIsPlaying(!isPlaying)}
+          onTogglePlay={() => {
+            if (!isPlaying && isMobile) {
+              setActiveTab('canvas')
+              requestAnimationFrame(() => setIsPlaying(true))
+            } else {
+              setIsPlaying(!isPlaying)
+            }
+          }}
           onMirrorChange={(v) => update('mirror', v ? '1' : '0')}
         />
 

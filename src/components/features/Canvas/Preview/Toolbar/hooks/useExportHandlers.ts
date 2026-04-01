@@ -29,12 +29,9 @@ export function useExportHandlers({
 
   const handleExportSvg = useCallback(() => {
     if (!selectedSvg) return
-    const blob = new Blob(
-      [generateSvgCode(selectedSvg, elementConfigs, selectedDocId)],
-      {
-        type: 'image/svg+xml',
-      },
-    )
+    const blob = new Blob([generateSvgCode(selectedSvg, elementConfigs, selectedDocId)], {
+      type: 'image/svg+xml',
+    })
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
     a.href = url

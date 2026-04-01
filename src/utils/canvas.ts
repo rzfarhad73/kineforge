@@ -155,8 +155,8 @@ export function syncPositionBadge(ids: string[]): { x: number; y: number } | nul
 
     const xSpan = badge.querySelector('[data-pos-x]')
     const ySpan = badge.querySelector('[data-pos-y]')
-    if (xSpan) xSpan.textContent = `x: ${parseFloat(rulerX.toFixed(1))}`
-    if (ySpan) ySpan.textContent = `y: ${parseFloat(rulerY.toFixed(1))}`
+    if (xSpan) xSpan.textContent = `x: ${Math.round(rulerX)}`
+    if (ySpan) ySpan.textContent = `y: ${Math.round(rulerY)}`
   }
 
   lastRulerPos = { x: rulerX, y: rulerY }

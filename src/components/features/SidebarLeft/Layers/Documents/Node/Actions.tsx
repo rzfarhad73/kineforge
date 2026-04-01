@@ -30,44 +30,48 @@ export function Actions() {
 
   const actions: ActionItem[] = [
     {
-      icon: <Group size={13} />,
+      icon: <Group className="w-3 h-3 coarse-pointer:w-4 coarse-pointer:h-4" />,
       tooltip: 'Group into <g>',
       onClick: () => onWrapInGroup(id),
       show: !isRoot,
     },
     {
-      icon: <Ungroup size={13} />,
+      icon: <Ungroup className="w-3 h-3 coarse-pointer:w-4 coarse-pointer:h-4" />,
       tooltip: 'Ungroup children',
       onClick: () => onFlattenGroup(id),
       show: isGroup && !isRoot,
     },
     {
-      icon: <ArrowUpFromLine size={13} />,
+      icon: <ArrowUpFromLine className="w-3 h-3 coarse-pointer:w-4 coarse-pointer:h-4" />,
       tooltip: 'Move out of group',
       onClick: () => onExtractElement(id),
       show: canExtract,
     },
     {
-      icon: <ArrowUpFromLine size={13} />,
+      icon: <ArrowUpFromLine className="w-3 h-3 coarse-pointer:w-4 coarse-pointer:h-4" />,
       tooltip: 'Move to own SVG layer',
       onClick: () => onExtractToNewSvg(id),
       show: canExtractToNewSvg,
     },
     {
-      icon: isHidden ? <EyeOff size={14} /> : <Eye size={14} />,
+      icon: isHidden ? (
+        <EyeOff className="w-3.5 h-3.5 coarse-pointer:w-4 coarse-pointer:h-4" />
+      ) : (
+        <Eye className="w-3.5 h-3.5 coarse-pointer:w-4 coarse-pointer:h-4" />
+      ),
       tooltip: isHidden ? 'Show element' : 'Hide element',
       onClick: () => onToggleVisibility(id),
       show: true,
       style: isHidden ? { opacity: 0.6 } : undefined,
     },
     {
-      icon: <Trash2 size={13} />,
+      icon: <Trash2 className="w-3 h-3 coarse-pointer:w-4 coarse-pointer:h-4" />,
       tooltip: 'Delete element',
       onClick: () => onDelete(id),
       show: !isRoot,
     },
     {
-      icon: <Trash2 size={13} />,
+      icon: <Trash2 className="w-3 h-3 coarse-pointer:w-4 coarse-pointer:h-4" />,
       tooltip: 'Remove layer',
       onClick: () => onRemoveDocument(docId),
       show: isRoot,
@@ -83,6 +87,7 @@ export function Actions() {
             <Button
               variant="icon"
               size="xs"
+              className="coarse-pointer:w-8 coarse-pointer:h-8"
               style={style}
               onClick={(e) => {
                 e.stopPropagation()

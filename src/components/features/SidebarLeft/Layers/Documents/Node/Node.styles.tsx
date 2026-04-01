@@ -18,7 +18,7 @@ export function Item({
   return (
     <div
       role="treeitem"
-      className={`flex items-center gap-1 px-2 py-1.5 text-xs rounded cursor-pointer transition-colors duration-75 ${
+      className={`flex items-center gap-1 px-2 py-1.5 coarse-pointer:py-0.5 text-xs rounded cursor-pointer transition-colors duration-75 ${
         selected ? 'bg-primary text-primary-fg' : 'hover:bg-surface-raised text-fg-secondary'
       } ${hidden ? 'opacity-40' : ''} ${dropInside ? 'ring-2 ring-accent ring-inset' : ''} ${className ?? ''}`}
       style={{ paddingLeft: `${depth * 12 + 8}px` }}

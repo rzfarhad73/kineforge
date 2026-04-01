@@ -19,7 +19,7 @@ function LayersInner() {
 
   return (
     <DragProvider>
-      <div className="flex flex-col gap-1" role="tree" aria-label="Layer tree">
+      <div className="flex flex-col gap-1 coarse-pointer:gap-0" role="tree" aria-label="Layer tree">
         {documents.map((doc) => (
           <Documents
             key={doc.id}
